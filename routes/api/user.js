@@ -10,7 +10,7 @@ const User = require("../../models/User");
 const router = express.Router();
 
 // @route POST /api/users
-// @desc  Test routes
+// @desc  Register routes
 // @access  Public
 router.post(
   "/",
