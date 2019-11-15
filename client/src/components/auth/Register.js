@@ -2,11 +2,12 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actiions/alert";
+import { register } from "../../actiions/auth";
 import PropTypes from "prop-types";
 
 // import axios from "axios";
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setformData] = useState({
     name: "",
     emai: "",
@@ -24,27 +25,7 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert("password do not match", "danger");
     } else {
-      console.log("Success");
-
-      //   const newUser = {
-      //     name,
-      //     email,
-      //     password
-      //   };
-      //   try {
-      //     const config = {
-      //       headers: {
-      //         "Content-Type": "application/json"
-      //       }
-      //     };
-      //     const body = JSON.stringify(newUser);
-      //     console.log(body);
-
-      //     const res = await axios.post("/api/users", body, config);
-      //     console.log(res.data);
-      //   } catch (err) {
-      //     console.log(err.response.data);
-      //   }
+      register({ name, email, password });
     }
   };
 
@@ -111,7 +92,8 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);

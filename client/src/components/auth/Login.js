@@ -1,10 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actiions/auth";
+
 // import axios from "axios";
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formData, setformData] = useState({
-    emai: "",
+    email: "",
     password: ""
   });
 
@@ -16,7 +20,7 @@ const Login = () => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    console.log("Success");
+    login({ email, password });
   };
 
   return (
@@ -61,4 +65,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(null, { login })(Login);

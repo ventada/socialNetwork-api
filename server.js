@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const connectDB = require("./config/db");
-
+const auth = require("./routes/middleware/auth");
 const app = express();
 
 // connect database
